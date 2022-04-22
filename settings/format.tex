@@ -1,0 +1,141 @@
+%% 自定义相关的名称宏命令
+%% ==================================================
+%% \newcommand{\yourcommand}[参数个数]{内容}
+% 塔里木大学各单位名称
+\newcommand{\taru}{塔里木大学}
+\newcommand{\cie}{信息工程学院}
+\newcommand{\ciee}{信息与电气工程学院}
+
+%% 签署春秋学期日期命令
+\newcommand{\tomonth}{
+  \the\year 年\the\month 月
+}
+
+
+\newcommand{\tomonthen}{
+  \ifcase\the\month
+  \or January%
+  \or February%
+  \or March%
+  \or April%
+  \or May%
+  \or June%
+  \or July%
+  \or August%
+  \or September%
+  \or October%
+  \or November%
+  \or December%
+  \fi, \the\year
+}
+
+\newcommand{\tosemester}{
+  \the\year 年\ 
+  \ifcase\the\month
+  \or 秋%
+  \or 春%
+  \or 春%
+  \or 春%
+  \or 春%
+  \or 春%
+  \or 春%
+  \or 夏%
+  \or 秋%
+  \or 秋%
+  \or 秋%
+  \or 秋%
+  \fi
+}
+
+\newcommand{\tosemesteren}{
+  \ifcase\the\month
+  \or Autumn%
+  \or Spring%
+  \or Spring%
+  \or Spring%
+  \or Spring%
+  \or Spring%
+  \or Summer%
+  \or Autumn%
+  \or Autumn%
+  \or Autumn%
+  \or Autumn%
+  \or Autumn%
+  \fi, \the\year
+}
+
+% 插图路径设置
+% ==================================================
+\graphicspath{{figs/}}%图片所在的目录
+% ==================================================
+
+% 为标题页/封底页指定一个 logo
+\pgfdeclareimage[height=0.5cm]{titlepagelogo}{cauname}% 标题页
+\titlegraphic{% 标题页底部
+  \pgfuseimage{titlepagelogo}
+}
+
+
+% 载入需要的TiKZ库
+\usetikzlibrary{chains}
+
+%% 设置绘制目录结构的宏及参数
+\usepackage[edges]{forest}
+\definecolor{folderbg}{RGB}{124,166,198}
+\definecolor{folderborder}{RGB}{110,144,169}
+\newlength\Size
+\setlength\Size{4pt}
+\tikzset{%
+  folder/.pic={%
+      \filldraw [draw=folderborder, top color=folderbg!50, bottom color=folderbg] (-1.05*\Size,0.2\Size+5pt) rectangle ++(.75*\Size,-0.2\Size-5pt);
+      \filldraw [draw=folderborder, top color=folderbg!50, bottom color=folderbg] (-1.15*\Size,-\Size) rectangle (1.15*\Size,\Size);
+    },
+  file/.pic={%
+      \filldraw [draw=folderborder, top color=folderbg!5, bottom color=folderbg!10] (-\Size,.4*\Size+5pt) coordinate (a) |- (\Size,-1.2*\Size) coordinate (b) -- ++(0,1.6*\Size) coordinate (c) -- ++(-5pt,5pt) coordinate (d) -- cycle (d) |- (c) ;
+    },
+}
+\forestset{%
+declare autowrapped toks={pic me}{},
+declare boolean register={pic root},
+pic root=0,
+pic dir tree/.style={%
+for tree={%
+    folder,
+    %font=\ttfamily,
+    grow'=0,
+    s sep=1.0pt,
+    font=\small \sffamily,
+    %fit=band,
+    %ysep = 1.0pt,
+    inner ysep = 2.6pt,
+  },
+before typesetting nodes={%
+for tree={%
+edge label+/.option={pic me},
+},
+if pic root={
+tikz+={
+\pic at ([xshift=\Size].west) {folder};
+},
+align={l}
+}{},
+},
+},
+pic me set/.code n args=2{%
+    \forestset{%
+      #1/.style={%
+          inner xsep=2\Size,
+          pic me={pic {#2}},
+        }
+    }
+  },
+pic me set={directory}{folder},
+pic me set={file}{file},  
+}
+%% ==================================================
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../main.tex"
+%%% End: 

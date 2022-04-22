@@ -1,0 +1,85 @@
+% \documentclass[10pt]{beamer}
+\documentclass[xcolor=svgnames, t, aspectratio=169]{ctexbeamer}
+\usepackage{booktabs}
+\usepackage{makecell}
+
+\usetheme[
+%%% options passed to the outer theme
+%    progressstyle=corner,   % either fixedCircCnt, movCircCnt, or corner
+%    rotationcw,                 % change the rotation direction from counter-clockwise to clockwise
+%    shownavsym                  % show the navigation symbols
+  ]{tarusimple}
+
+\input{settings/packages.tex}
+\input{settings/format.tex}  
+  
+\title{中国农业大学博士入学复试报告}
+%\subtitle{基于冠层改进的Cotton2K模型}
+\date[2022/4/24]{\zhdate{2022/4/24}}
+\author[唐梓涯]
+{唐梓涯}
+\institute
+{
+  \ciee
+  
+}
+
+\begin{document}
+
+{\taruwavesbg%
+\begin{frame}[plain,noframenumbering]
+  \titlepage
+\end{frame}
+}
+
+\begin{frame}{目录}{内容列表}
+  \begin{enumerate}
+    \item 个人基本情况
+    \item 教育经历
+    \item 工作经历
+    \item 科研经历
+    \item 取得成果
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{个人基本情况}{}
+  本人名叫唐梓涯，30 岁，江苏如东人，中共预备党员。
+\end{frame}
+
+\begin{frame}{教育经历}{毕业院校、专业}
+  \begin{table}
+    %\caption{本科、硕士就读院校及专业}
+    \begin{tabular}{cc}
+      本科                                       & 硕士                                                           \\
+      \includegraphics[scale=1.15]{ppcnwafu.png} & \includegraphics[scale=0.5,trim=88 71 66 77,clip]{cietaru.png} \\
+      2010{-}2014                                & 2019至今\\
+      植物保护 (090103)                          & 农业电气化与自动化 (082804)
+    \end{tabular}
+  \end{table}
+\end{frame}
+\begin{frame}{工作经历}{南京振古}
+  \begin{center}
+    \includegraphics[scale=0.18]{zettage.png}
+  \end{center}
+\end{frame}
+\begin{frame}{工作经历}{Microsoft}
+  \includegraphics[scale=0.14,trim=0 0 0 120,clip]{microsoft_css.jpg}
+  \includegraphics[scale=0.2]{azure.png}
+\end{frame}
+\begin{frame}{工作经历}{科大讯飞}
+  \begin{center}
+    \includegraphics[scale=0.2,trim=0 0 0 300,clip]{iflytek.jpg}
+  \end{center}
+\end{frame}
+\begin{frame}{科研经历}{维哈语料库}
+  % \begin{center}
+  %   \includegraphics[scale=0.2,trim=0 0 0 300,clip]{iflytek.jpg}
+  % \end{center}
+\end{frame}
+{\taruwavesbg
+\begin{frame}[plain,noframenumbering]
+  \finalpage{谢谢各位老师同学聆听！\\欢迎大家多提宝贵意见和建议!}
+\end{frame}
+}
+
+\end{document}
